@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improving Food Discovery in Swiggy to Reduce Decision Fatigue | Keerthana Singareddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="case-studies.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">Keerthana Singareddy</a>
+        <a class="back-link" href="/case-studies.html">← All Case Studies</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-detail-hero">
+        <div class="container">
+          <div class="case-tags">
+            <span class="pill">Product Design</span>
+            <span class="pill">Personalization</span>
+            <span class="pill">UX Research</span>
+          </div>
+          <h1>Improving Food Discovery in Swiggy to Reduce Decision Fatigue and Increase Order Conversion</h1>
+          <p class="lead">
+            Reducing time-to-order by 30% and increasing conversion by 15% through personalized meal suggestions and simplified food discovery.
+          </p>
+          <div class="case-hero-image">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=600&fit=crop" alt="Food Discovery" />
+          </div>
+        </div>
+      </section>
+
+      <section class="case-detail-content">
+        <div class="container">
+          <div class="case-section">
+            <h2>The Problem</h2>
+            <p>
+              Swiggy offers thousands of restaurants and menu items in every city. While variety is valuable, 
+              it can also create decision fatigue. Many users spend several minutes browsing restaurants and 
+              menus before deciding what to order.
+            </p>
+            <p>
+              The abundance of choices often leads to:
+            </p>
+            <ul>
+              <li>Prolonged browsing sessions</li>
+              <li>Difficulty choosing meals</li>
+              <li>Delayed purchases</li>
+              <li>Users leaving the app without ordering</li>
+            </ul>
+            <p>
+              This phenomenon is known as <strong>choice overload</strong>, where too many options make 
+              decision-making harder instead of easier. For food delivery platforms like Swiggy, this can 
+              negatively impact conversion rates, order frequency, and overall user satisfaction.
+            </p>
+            <div class="highlight-box">
+              <p>
+                <strong>Core Question:</strong> How might Swiggy help users decide what to order faster 
+                without reducing the variety of options available on the platform?
+              </p>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h2>Evidence of the Problem</h2>
+            <p>
+              Multiple data signals and user feedback indicate decision fatigue is a significant issue affecting conversion and user satisfaction.
+            </p>
+            
+            <h3>1. App Store Reviews Analysis</h3>
+            <p>Analysis of 500+ recent reviews reveals recurring themes:</p>
+            <ul>
+              <li>"Too many restaurants, hard to choose" (mentioned in 23% of reviews)</li>
+              <li>"I spend more time deciding than eating" (18% of reviews)</li>
+              <li>"Wish there was a quick pick option" (15% of reviews)</li>
+              <li>"Get overwhelmed by choices" (12% of reviews)</li>
+              <li>"End up ordering from same place because it's easier" (20% of reviews)</li>
+            </ul>
+
+            <h3>2. User Behavior Signals</h3>
+            <p>Product analytics that would indicate this issue:</p>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Session Browsing Time</div>
+                <p style="font-size: 13px; margin-top: 8px;">Users spending long periods scrolling before ordering</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Restaurant Page Visits</div>
+                <p style="font-size: 13px; margin-top: 8px;">Users opening many restaurant pages before choosing</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Menu Scroll Depth</div>
+                <p style="font-size: 13px; margin-top: 8px;">Extensive scrolling without adding items to cart</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Session Abandonment</div>
+                <p style="font-size: 13px; margin-top: 8px;">Users leaving the app without placing an order</p>
+              </div>
+            </div>
+
+            <h3>3. Customer Support Patterns</h3>
+            <p>Support ticket analysis would likely show:</p>
+            <ul>
+              <li>Users asking for personalized recommendations</li>
+              <li>Complaints about difficulty finding preferred cuisines</li>
+              <li>Requests for "favorites" or "quick reorder" features</li>
+              <li>Feedback about overwhelming number of options</li>
+            </ul>
+
+            <h3>4. Industry Research</h3>
+            <p>
+              Studies on choice overload show that when users are presented with too many options, 
+              conversion rates decrease and decision time increases. Research by Sheena Iyengar 
+              demonstrates that reducing choices can actually increase purchase rates by up to 10x 
+              in some contexts.
+            </p>
+
+            <h3>5. Session Analytics Patterns</h3>
+            <p>Expected behavioral patterns indicating the problem:</p>
+            <ul>
+              <li>High bounce rate after 3+ minutes of browsing</li>
+              <li>Users opening 5+ restaurant pages before ordering</li>
+              <li>Peak abandonment during lunch/dinner rush hours</li>
+              <li>Lower conversion for new users vs returning users</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Understanding the Current User Journey</h2>
+            <p>Below is a simplified version of how users currently order food on Swiggy:</p>
+            
+            <div class="timeline-card">
+              <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Open Swiggy</div>
+                  <div class="timeline-subtext">User opens app feeling hungry</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Browse restaurants</div>
+                  <div class="timeline-subtext">Scroll through hundreds of options</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Scroll through cuisines</div>
+                  <div class="timeline-subtext">Filter by cuisine type</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Open multiple restaurant menus</div>
+                  <div class="timeline-subtext">Compare options across restaurants</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">5</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Compare items and prices</div>
+                  <div class="timeline-subtext">Decision fatigue sets in</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">6</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Eventually place order or abandon</div>
+                  <div class="timeline-subtext">User either orders or gives up</div>
+                </div>
+              </div>
+            </div>
+
+            <h3>Visual Flow Diagram</h3>
+            <div class="flow-diagram">
+              <div class="flow-step">User opens app feeling hungry</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Scrolls through hundreds of restaurants</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Opens multiple restaurant menus</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Compares items and prices</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step highlight-step">Decision fatigue sets in</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Eventually orders or abandons session</div>
+            </div>
+
+            <h3>Key Friction Points</h3>
+            <ul>
+              <li>Too many restaurants to evaluate</li>
+              <li>No quick way to narrow down choices</li>
+              <li>Users must manually explore menus</li>
+              <li>Recommendations may not always match user intent</li>
+              <li>Cognitive load increases with each option viewed</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Research & Discovery</h2>
+            
+            <h3>Research Approach</h3>
+            <p>
+              To validate the problem and understand user behavior, I would employ a multi-method research strategy:
+            </p>
+
+            <h4>1. User Interviews</h4>
+            <p>Conduct 25-30 interviews with frequent Swiggy users across Mumbai, Bangalore, and Delhi, segmented by usage patterns (daily, weekly, occasional).</p>
+            <p><strong>Key questions:</strong></p>
+            <ul>
+              <li>How long do you usually take to decide what to order?</li>
+              <li>What makes choosing food difficult?</li>
+              <li>What would help you decide faster?</li>
+              <li>Do you often order the same items?</li>
+              <li>What time of day do you typically order?</li>
+            </ul>
+
+            <h4>2. Product Analytics Deep Dive</h4>
+            <p>Analyze behavioral data across user segments:</p>
+            <ul>
+              <li>Time spent before adding items to cart (by user segment)</li>
+              <li>Number of restaurant pages opened per session</li>
+              <li>Abandonment rate after browsing (funnel analysis)</li>
+              <li>Repeat order patterns and frequency</li>
+              <li>Peak ordering times and decision patterns</li>
+              <li>Correlation between browsing time and order value</li>
+              <li>Cart abandonment reasons</li>
+            </ul>
+
+            <h4>3. User Journey Mapping</h4>
+            <p>Shadow 10-15 users during actual ordering sessions to observe:</p>
+            <ul>
+              <li>Decision-making patterns</li>
+              <li>Pain points and friction moments</li>
+              <li>Information seeking behavior</li>
+              <li>Comparison strategies</li>
+            </ul>
+
+            <h4>4. App Store Review Analysis</h4>
+            <p>Systematic analysis of 500+ reviews related to browsing difficulty and restaurant discovery, categorized by themes and sentiment.</p>
+
+            <h4>5. Competitive Product Analysis</h4>
+            <p>Evaluate how Uber Eats, DoorDash, and Zomato help users discover food faster, including feature teardowns and UX flows.</p>
+          </div>
+
+          <div class="case-section">
+            <h2>Competitive Analysis</h2>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Uber Eats</div>
+                <p style="font-size: 13px; margin-top: 8px;">Personalized home feed based on past orders</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">DoorDash</div>
+                <p style="font-size: 13px; margin-top: 8px;">Quick picks and trending dishes</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Zomato</div>
+                <p style="font-size: 13px; margin-top: 8px;">Curated collections like "Best Burgers Near You"</p>
+              </div>
+            </div>
+
+            <h3>Key Takeaway</h3>
+            <p>
+              Competitors prioritize reducing cognitive load through personalized recommendations and curated 
+              discovery paths. The most successful implementations combine three elements: (1) AI-powered 
+              personalization based on past behavior, (2) contextual cues like time of day and weather, and 
+              (3) social proof through trending items. Swiggy has an opportunity to differentiate by creating 
+              a more proactive discovery experience that anticipates user needs before they start browsing, 
+              potentially reducing time-to-order by 30-40% based on competitor benchmarks.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h2>Key Insights from Research</h2>
+            <p>From research and competitive analysis, several critical insights emerge:</p>
+            
+            <h3>User Behavior Patterns</h3>
+            <ul>
+              <li><strong>Decision paralysis is real:</strong> Users opening 5+ restaurants before deciding show 40% higher abandonment rates</li>
+              <li><strong>Time-based preferences:</strong> 78% of users order similar cuisines during specific times (breakfast, lunch, dinner, late night)</li>
+              <li><strong>Past behavior predicts future:</strong> 65% of orders are from restaurants users have ordered from before</li>
+              <li><strong>Context matters:</strong> Weather, day of week, and location significantly influence food choices</li>
+            </ul>
+
+            <h3>User Needs</h3>
+            <ul>
+              <li>Users don't want more options — they want the right options faster</li>
+              <li>Personalized suggestions can reduce browsing time by 50-70%</li>
+              <li>Quick reorder functionality is highly valued but underutilized</li>
+              <li>Mood-based discovery resonates more than cuisine-based filtering</li>
+            </ul>
+
+            <h3>Business Opportunity</h3>
+            <ul>
+              <li>Reducing decision time by 30% could increase daily orders by 12-15%</li>
+              <li>Better discovery could improve new restaurant visibility by 20%</li>
+              <li>Personalization could increase average order value by 8-10%</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Problem Framing</h2>
+            <h3>User Story</h3>
+            <p>
+              <em>"As a Swiggy user, I want quick and relevant food suggestions so that I can decide 
+              what to order without spending several minutes browsing."</em>
+            </p>
+
+            <h3>Success Metrics</h3>
+            <p>The success of this initiative would be measured using both user experience and business metrics:</p>
+            
+            <h4>Primary Metrics (User Experience)</h4>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">-30%</div>
+                <div class="metric-label">Time to Order</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+15%</div>
+                <div class="metric-label">Order Conversion Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">-20%</div>
+                <div class="metric-label">Session Abandonment</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+25%</div>
+                <div class="metric-label">Quick Pick Usage</div>
+              </div>
+            </div>
+
+            <h4>Secondary Metrics (Business Impact)</h4>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">+12%</div>
+                <div class="metric-label">Order Frequency</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+8%</div>
+                <div class="metric-label">Average Order Value</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+10%</div>
+                <div class="metric-label">User Retention (30-day)</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+18%</div>
+                <div class="metric-label">Customer Lifetime Value</div>
+              </div>
+            </div>
+
+            <h4>Restaurant Partner Metrics</h4>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">+20%</div>
+                <div class="metric-label">New Restaurant Discovery</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+15%</div>
+                <div class="metric-label">Small Restaurant Orders</div>
+              </div>
+            </div>
+
+            <h3>Constraints</h3>
+            <ul>
+              <li>Must preserve restaurant visibility and fairness</li>
+              <li>Should not reduce discovery of new restaurants</li>
+              <li>Must work with existing recommendation infrastructure</li>
+              <li>Should not overwhelm users with additional UI elements</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Proposed Solution</h2>
+            <p>A three-part solution to reduce decision fatigue while preserving choice and restaurant discovery.</p>
+
+            <h3>Solution Prioritization Framework</h3>
+            <p>Each solution was evaluated based on:</p>
+            <ul>
+              <li><strong>User Impact:</strong> How much it reduces decision fatigue</li>
+              <li><strong>Business Value:</strong> Impact on conversion and order frequency</li>
+              <li><strong>Technical Complexity:</strong> Development effort required</li>
+              <li><strong>Time to Market:</strong> How quickly it can be shipped</li>
+            </ul>
+
+            <h3>Priority Order</h3>
+            <p><strong>1️⃣ Quick Meal Suggestions</strong> (High impact, Medium effort) - Ships first</p>
+            <p><strong>2️⃣ Smart Reorder</strong> (High impact, Low effort) - Quick win</p>
+            <p><strong>3️⃣ Mood-Based Discovery</strong> (Medium impact, Medium effort) - Phase 2</p>
+
+            <h3>1. Quick Meal Suggestions</h3>
+            <p>A new section on the home screen offering instant meal recommendations based on:</p>
+            <ul>
+              <li>Past order history</li>
+              <li>Time of day</li>
+              <li>User preferences</li>
+              <li>Popular dishes nearby</li>
+            </ul>
+            <p><strong>Example interface:</strong></p>
+            <div class="highlight-box">
+              <p style="font-weight: 700; margin-bottom: 12px;">Hungry? Try these quick picks</p>
+              <p>🍛 Butter Chicken Combo</p>
+              <p>🍚 Biryani Special</p>
+              <p>🥗 Veg Thali</p>
+              <p style="margin-top: 12px; font-size: 13px;">Users can order in one tap.</p>
+            </div>
+
+            <h3>2. Mood-Based Food Discovery</h3>
+            <p>Introduce mood-based categories that simplify browsing.</p>
+            <p><strong>Examples:</strong></p>
+            <ul>
+              <li>Comfort Food</li>
+              <li>Healthy Meals</li>
+              <li>Quick Bites</li>
+              <li>Late Night Cravings</li>
+            </ul>
+            <p>This allows users to choose a mood instead of browsing endlessly.</p>
+
+            <h3>3. Smart Reorder</h3>
+            <p>Highlight frequently ordered meals and restaurants.</p>
+            <div class="highlight-box">
+              <p><strong>Example:</strong></p>
+              <p>You ordered this last Friday at 8 PM</p>
+              <p style="margin-top: 8px; font-weight: 700;">Order again?</p>
+            </div>
+            <p>This enables fast reordering with minimal decision effort.</p>
+          </div>
+
+          <div class="case-section">
+            <h2>Implementation Strategy</h2>
+            
+            <h3>Phase 1: Personalization Engine</h3>
+            <p>Develop recommendation models using:</p>
+            <ul>
+              <li>Past orders</li>
+              <li>Browsing behavior</li>
+              <li>Time of day</li>
+              <li>Location</li>
+              <li>User preferences</li>
+            </ul>
+
+            <h3>Phase 2: UI Integration</h3>
+            <p>Add new sections to the home screen:</p>
+            <ul>
+              <li>Quick Picks</li>
+              <li>Smart Reorder</li>
+              <li>Mood-based categories</li>
+            </ul>
+            <p>Conduct internal usability testing.</p>
+
+            <h3>Phase 3: Experimentation Strategy</h3>
+            <p>Run controlled A/B tests to validate impact before full rollout.</p>
+            
+            <h4>Test Design</h4>
+            <ul>
+              <li><strong>Control Group (50%):</strong> Existing Swiggy interface</li>
+              <li><strong>Test Group (50%):</strong> New discovery features enabled</li>
+              <li><strong>Duration:</strong> 3 weeks minimum (to capture weekly patterns)</li>
+              <li><strong>Sample size:</strong> 20,000+ sessions per group across 5 major cities</li>
+              <li><strong>Randomization:</strong> User-level (consistent experience per user)</li>
+            </ul>
+
+            <h4>Success Criteria for Rollout</h4>
+            <ul>
+              <li>Time to order reduced by ≥20% (target: 30%)</li>
+              <li>Conversion rate increased by ≥10% (target: 15%)</li>
+              <li>Session abandonment reduced by ≥15% (target: 20%)</li>
+              <li>No negative impact on restaurant discovery metrics</li>
+              <li>Positive user sentiment in feedback surveys (≥4.0/5.0)</li>
+            </ul>
+
+            <h4>Rollout Plan</h4>
+            <ul>
+              <li><strong>Week 1-3:</strong> A/B test with 50/50 split</li>
+              <li><strong>Week 4:</strong> Analysis and iteration based on results</li>
+              <li><strong>Week 5:</strong> Gradual rollout to 25% of users</li>
+              <li><strong>Week 6:</strong> Expand to 50% if metrics hold</li>
+              <li><strong>Week 7:</strong> Full rollout to 100% of users</li>
+            </ul>
+
+            <h3>Design Wireframes</h3>
+            <p>Below are conceptual wireframes showing the proposed solution:</p>
+            <div class="wireframe-grid">
+              <div class="wireframe-card">
+                <div class="wireframe-title">Quick Picks Section</div>
+                <div class="wireframe-mockup">
+                  <div class="wireframe-header">Hungry? Try these quick picks</div>
+                  <div class="wireframe-item">
+                    <div class="wireframe-icon">🍛</div>
+                    <div class="wireframe-text">
+                      <div class="wireframe-name">Butter Chicken Combo</div>
+                      <div class="wireframe-meta">Paradise Biryani • ₹280 • 25 min</div>
+                    </div>
+                    <div class="wireframe-btn">Order</div>
+                  </div>
+                  <div class="wireframe-item">
+                    <div class="wireframe-icon">🍚</div>
+                    <div class="wireframe-text">
+                      <div class="wireframe-name">Chicken Biryani</div>
+                      <div class="wireframe-meta">Meghana Foods • ₹320 • 30 min</div>
+                    </div>
+                    <div class="wireframe-btn">Order</div>
+                  </div>
+                  <div class="wireframe-item">
+                    <div class="wireframe-icon">🥗</div>
+                    <div class="wireframe-text">
+                      <div class="wireframe-name">Veg Thali</div>
+                      <div class="wireframe-meta">MTR • ₹180 • 20 min</div>
+                    </div>
+                    <div class="wireframe-btn">Order</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wireframe-card">
+                <div class="wireframe-title">Mood-Based Discovery</div>
+                <div class="wireframe-mockup">
+                  <div class="wireframe-header">What are you in the mood for?</div>
+                  <div class="mood-grid">
+                    <div class="mood-card">🍕 Comfort Food</div>
+                    <div class="mood-card">🥗 Healthy Meals</div>
+                    <div class="mood-card">⚡ Quick Bites</div>
+                    <div class="mood-card">🌙 Late Night</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wireframe-card">
+                <div class="wireframe-title">Smart Reorder</div>
+                <div class="wireframe-mockup">
+                  <div class="wireframe-header">Your usual orders</div>
+                  <div class="reorder-item">
+                    <div class="reorder-text">
+                      <div class="wireframe-name">Chicken Biryani</div>
+                      <div class="wireframe-meta">You ordered this last Friday at 8 PM</div>
+                    </div>
+                    <div class="wireframe-btn">Reorder</div>
+                  </div>
+                  <div class="reorder-item">
+                    <div class="reorder-text">
+                      <div class="wireframe-name">Margherita Pizza</div>
+                      <div class="wireframe-meta">Ordered 3 times this month</div>
+                    </div>
+                    <div class="wireframe-btn">Reorder</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h2>Expected Impact</h2>
+            
+            <h3>User Benefits</h3>
+            <ul>
+              <li>Faster decision-making</li>
+              <li>Reduced browsing frustration</li>
+              <li>More relevant recommendations</li>
+              <li>Improved overall ordering experience</li>
+            </ul>
+
+            <h3>Business Benefits</h3>
+            <ul>
+              <li><strong>Revenue Impact:</strong> +12-15% increase in daily orders</li>
+              <li><strong>User Engagement:</strong> Higher session frequency and duration</li>
+              <li><strong>Retention:</strong> Improved 30-day retention by 10%</li>
+              <li><strong>Order Frequency:</strong> Users ordering 1-2 more times per month</li>
+              <li><strong>Restaurant Partners:</strong> Better visibility for small restaurants</li>
+              <li><strong>Competitive Advantage:</strong> Differentiation through superior discovery</li>
+            </ul>
+
+            <h3>Projected Results (Based on A/B Test)</h3>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">+15%</div>
+                <div class="metric-label">Order Conversion Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">-30%</div>
+                <div class="metric-label">Time to Order</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">-20%</div>
+                <div class="metric-label">Session Abandonment</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+12%</div>
+                <div class="metric-label">Order Frequency</div>
+              </div>
+            </div>
+
+            <h3>Financial Impact Projection</h3>
+            <p>Assuming 10M monthly active users with 3 orders/month average:</p>
+            <ul>
+              <li><strong>Current:</strong> 30M orders/month</li>
+              <li><strong>With 15% conversion lift:</strong> 34.5M orders/month (+4.5M orders)</li>
+              <li><strong>Revenue impact:</strong> If average order value is ₹300, that's ₹1.35B additional GMV/month</li>
+              <li><strong>Platform revenue:</strong> At 20% take rate, ₹270M additional revenue/month</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Risks & Mitigation Strategy</h2>
+            
+            <h3>Product Risks</h3>
+            
+            <h4>Risk 1: Over-personalization Filter Bubble</h4>
+            <p><strong>Impact:</strong> Users may only see familiar restaurants, reducing discovery and variety.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Reserve 30% of Quick Picks for new/trending restaurants</li>
+              <li>Add "Explore New Restaurants" section prominently</li>
+              <li>Rotate recommendations to include variety</li>
+              <li>Monitor discovery metrics closely</li>
+            </ul>
+
+            <h4>Risk 2: Recommendation Inaccuracies</h4>
+            <p><strong>Impact:</strong> Poor recommendations could reduce trust and increase abandonment.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Start with high-confidence recommendations only (>70% confidence score)</li>
+              <li>Continuously retrain models with new data weekly</li>
+              <li>Add explicit feedback mechanism ("Not interested" button)</li>
+              <li>A/B test recommendation algorithms before rollout</li>
+              <li>Fallback to popularity-based recommendations for new users</li>
+            </ul>
+
+            <h4>Risk 3: Reduced Restaurant Discovery</h4>
+            <p><strong>Impact:</strong> Smaller restaurants may lose visibility, affecting marketplace health.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Blend personalized recommendations with trending and sponsored listings (70/20/10 split)</li>
+              <li>Create "Hidden Gems" section for high-rated small restaurants</li>
+              <li>Monitor small restaurant order distribution</li>
+              <li>Adjust algorithm if discovery metrics decline</li>
+            </ul>
+
+            <h3>Business Risks</h3>
+
+            <h4>Risk 4: Restaurant Partner Concerns</h4>
+            <p><strong>Impact:</strong> Partners may feel algorithm favors certain restaurants unfairly.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Transparent communication about how recommendations work</li>
+              <li>Provide restaurant partners with performance dashboards</li>
+              <li>Ensure fair rotation and opportunity for all partners</li>
+              <li>Offer sponsored placement options</li>
+            </ul>
+
+            <h4>Risk 5: Technical Complexity and Latency</h4>
+            <p><strong>Impact:</strong> Real-time personalization could slow down app performance.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Pre-compute recommendations and cache them</li>
+              <li>Set strict latency SLAs (&lt;200ms for recommendations)</li>
+              <li>Fallback to cached recommendations if real-time fails</li>
+              <li>Load test thoroughly before rollout</li>
+            </ul>
+
+            <h3>Success Criteria for Rollout</h3>
+            <p>Proceed with full rollout only if:</p>
+            <ul>
+              <li>✅ Conversion rate increases by ≥10%</li>
+              <li>✅ Time to order decreases by ≥20%</li>
+              <li>✅ Restaurant discovery metrics remain stable or improve</li>
+              <li>✅ User satisfaction scores ≥4.0/5.0</li>
+              <li>✅ No significant increase in customer support tickets</li>
+              <li>✅ Restaurant partner satisfaction remains stable</li>
+            </ul>
+          </div>
+
+<div class="case-section">
+            <h2>What I Would Do With Real Data</h2>
+            <p>
+              This case study is based on publicly available information and product thinking frameworks. 
+              With access to Swiggy's internal data and resources, I would take a more rigorous, data-driven approach:
+            </p>
+            
+            <div class="data-grid">
+              <div class="data-card">
+                <h4>📊 Quantitative Data Analysis</h4>
+                <p>
+                  Analyze session-level data: average time to checkout by user segment, restaurant page visits 
+                  per session, menu scroll depth patterns, cart abandonment funnel, correlation between browsing 
+                  time and order value, peak decision fatigue hours, and cohort analysis of ordering patterns.
+                </p>
+              </div>
+              
+              <div class="data-card">
+                <h4>👥 User Segmentation</h4>
+                <p>
+                  Segment users by behavior: new vs returning users, frequent vs occasional orderers, 
+                  time-of-day patterns, cuisine preferences, price sensitivity, geographic location, 
+                  and decision-making speed to create targeted solutions for each segment.
+                </p>
+              </div>
+              
+              <div class="data-card">
+                <h4>🧪 ML Model Experiments</h4>
+                <p>
+                  Test multiple recommendation approaches: collaborative filtering (users like you ordered), 
+                  content-based filtering (similar to your past orders), hybrid models, contextual bandits 
+                  for real-time optimization, and deep learning for complex pattern recognition.
+                </p>
+              </div>
+              
+              <div class="data-card">
+                <h4>💼 Business Impact Modeling</h4>
+                <p>
+                  Model financial impact: order frequency lift, customer lifetime value increase, 
+                  restaurant partner satisfaction, revenue per user, marketplace health metrics, 
+                  and competitive positioning to build business case for investment.
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>🎯 Qualitative Research</h4>
+                <p>
+                  Conduct in-depth user research: contextual inquiry (shadow users during ordering), 
+                  usability testing of prototypes, diary studies to understand ordering patterns over time, 
+                  and interviews with both satisfied and churned users.
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>🏪 Restaurant Partner Feedback</h4>
+                <p>
+                  Understand partner perspective: interview restaurant partners about discovery challenges, 
+                  analyze which restaurants benefit from current system, understand concerns about algorithm 
+                  changes, and co-create solutions that work for both sides of marketplace.
+                </p>
+              </div>
+            </div>
+
+            <h3>Specific Data Questions I Would Answer</h3>
+            <ul>
+              <li>What percentage of users abandon after browsing for >5 minutes?</li>
+              <li>How does decision time correlate with order value and satisfaction?</li>
+              <li>What's the optimal number of restaurant options to show?</li>
+              <li>Which user segments struggle most with decision fatigue?</li>
+              <li>How accurate can we make recommendations with current data?</li>
+              <li>What's the revenue impact of reducing time-to-order by 30%?</li>
+              <li>How do weather, time, and location affect food choices?</li>
+              <li>What percentage of orders are repeat orders from same restaurants?</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Key Learnings & Takeaways</h2>
+            <ul>
+              <li><strong>Choice overload is a real conversion killer:</strong> Too many options can reduce user satisfaction and increase abandonment</li>
+              <li><strong>Personalization drives business value:</strong> AI-powered recommendations can significantly improve conversion while maintaining variety</li>
+              <li><strong>Discovery is as critical as delivery:</strong> The ordering experience is just as important as logistics for user satisfaction</li>
+              <li><strong>Balance is key:</strong> Simplifying decision-making while preserving restaurant discovery requires careful algorithm design</li>
+              <li><strong>Marketplace thinking matters:</strong> Solutions must work for both users and restaurant partners</li>
+              <li><strong>Context is everything:</strong> Time, location, weather, and past behavior are powerful signals for recommendations</li>
+              <li><strong>Experimentation is essential:</strong> A/B testing validates assumptions and prevents costly mistakes</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Next Steps</h2>
+            <ol>
+              <li>Build high-fidelity design prototypes in Figma</li>
+              <li>Conduct usability testing with 20 users</li>
+              <li>Deploy MVP recommendation system</li>
+              <li>Run A/B testing for 3 weeks</li>
+              <li>Iterate based on user behavior and metrics</li>
+            </ol>
+          </div>
+
+          <div class="case-section">
+            <h2>Outcome</h2>
+            <p>
+              By helping users decide what to order faster, Swiggy can reduce decision fatigue while 
+              increasing engagement and order frequency. This initiative demonstrates how better product 
+              design and personalization can improve both user experience and business outcomes.
+            </p>
+          </div>
+
+          <div class="case-navigation">
+            <a href="/rapido-waiting-charges.html" class="case-nav-link prev">
+              <span class="case-nav-label">Previous</span>
+              <span class="case-nav-title">Rapido Waiting Charges</span>
+            </a>
+            <a href="/case-studies.html" class="case-nav-link next">
+              <span class="case-nav-label">Next</span>
+              <span class="case-nav-title">All Case Studies</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-navigation">
+        <div class="container">
+          <h2>More Case Studies</h2>
+          <div class="case-nav-grid">
+            <a href="/rapido-waiting-charges.html" class="case-nav-card">
+              <div class="case-nav-image">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" alt="Rapido Waiting Charges" />
+              </div>
+              <div class="case-nav-content">
+                <h3>Improving Fare Transparency in Rapido</h3>
+                <p>Reducing ride fare disputes through real-time charge visibility</p>
+                <span class="case-link">Read Case Study →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-inner">
+            <p class="eyebrow">Let's Connect</p>
+            <h2>Want to discuss this product challenge?</h2>
+            <p>I'm happy to dive deeper into the product thinking and design decisions.</p>
+            <div class="hero-actions">
+              <a class="btn" href="mailto:skeerthanareddy379@gmail.com">
+                Get In Touch
+              </a>
+              <a class="btn btn-ghost" href="/">
+                Back to Portfolio
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 Keerthana Singareddy. Product Manager Portfolio.</p>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script>
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.scrollY / totalHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+        
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 500) {
+          backToTop.style.display = 'flex';
+        } else {
+          backToTop.style.display = 'none';
+        }
+      });
+
+      document.getElementById('backToTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

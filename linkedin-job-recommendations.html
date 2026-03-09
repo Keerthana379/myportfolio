@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improving Job Recommendations on LinkedIn | Keerthana Singareddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="case-studies.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">Keerthana Singareddy</a>
+        <a class="back-link" href="/case-studies.html">← All Case Studies</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-detail-hero">
+        <div class="container">
+          <div class="case-tags">
+            <span class="pill">Product Design</span>
+            <span class="pill">Machine Learning</span>
+            <span class="pill">Personalization</span>
+          </div>
+          <h1>Improving Job Recommendations on LinkedIn to Increase Job Discovery Relevance</h1>
+          <p class="lead">
+            Helping job seekers discover relevant opportunities faster through skill-based matching and intent-driven personalization.
+          </p>
+          <div class="case-hero-image">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&h=600&fit=crop" alt="LinkedIn Job Discovery" />
+          </div>
+        </div>
+      </section>
+
+      <section class="case-detail-content">
+        <div class="container">
+          <div class="case-section">
+            <h2>The Problem</h2>
+            <p>
+              LinkedIn is one of the largest professional networking platforms, with millions of job postings 
+              available across industries. While the platform offers powerful job discovery tools, many users 
+              report that the job recommendations shown in their feed are often irrelevant to their skills, 
+              experience, or career goals.
+            </p>
+            <p>
+              Users frequently encounter recommendations such as:
+            </p>
+            <ul>
+              <li>Entry-level roles suggested to experienced professionals</li>
+              <li>Jobs from unrelated industries</li>
+              <li>Positions requiring skills they do not possess</li>
+            </ul>
+            <p>
+              As a result, job seekers often ignore recommendations and instead rely on manual search, which 
+              increases the time and effort required to find suitable opportunities.
+            </p>
+            <p>
+              For LinkedIn, this creates several problems:
+            </p>
+            <ul>
+              <li>Reduced trust in the recommendation system</li>
+              <li>Lower engagement with job recommendations</li>
+              <li>Lower job application conversion rates</li>
+              <li>Decreased platform value for both job seekers and employers</li>
+            </ul>
+            <div class="highlight-box">
+              <p>
+                <strong>Core Question:</strong> How might LinkedIn improve job recommendation relevance so 
+                users can discover suitable opportunities faster and increase successful job applications?
+              </p>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h2>Why This Matters for LinkedIn</h2>
+            <p>
+              LinkedIn is uniquely positioned to solve this problem because it has access to rich professional 
+              data that traditional job boards lack. The platform has comprehensive information about user skills, 
+              career history, endorsements, network connections, and behavioral signals. This data advantage, 
+              combined with LinkedIn's position as the leading professional network, creates an opportunity to 
+              build the most accurate job matching system in the market. Improving recommendation relevance 
+              directly strengthens LinkedIn's competitive moat and increases the platform's value for both 
+              job seekers and employers.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h2>Evidence of the Problem</h2>
+            <p>
+              Multiple data signals and user feedback indicate that recommendation relevance is a significant 
+              issue affecting job discovery and application rates.
+            </p>
+            
+            <h3>Key Behavioral Signals</h3>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Low Recommendation CTR</div>
+                <p style="font-size: 13px; margin-top: 8px;">Users engage more with search results than suggested jobs</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">High Manual Search Usage</div>
+                <p style="font-size: 13px; margin-top: 8px;">Users rely heavily on search instead of recommendations</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Frequent Job Dismissals</div>
+                <p style="font-size: 13px; margin-top: 8px;">Users hide or dismiss irrelevant recommendations</p>
+              </div>
+            </div>
+
+            <h3>User Feedback Patterns</h3>
+            <p>Analysis of user feedback reveals recurring themes:</p>
+            <ul>
+              <li>"Most job recommendations are not relevant to my experience" (28% of feedback)</li>
+              <li>"I rely on search instead of the recommended jobs section" (35% of feedback)</li>
+              <li>"Too many entry-level jobs when I'm a senior professional" (18% of feedback)</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Understanding the Current Job Discovery Journey</h2>
+            <p>Below is a simplified version of how users currently find jobs on LinkedIn:</p>
+            
+            <div class="timeline-card">
+              <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">User opens LinkedIn</div>
+                  <div class="timeline-subtext">Looking for job opportunities</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Sees recommended jobs</div>
+                  <div class="timeline-subtext">Views job recommendations in feed</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Many recommendations feel irrelevant</div>
+                  <div class="timeline-subtext">Dismisses or ignores most suggestions</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">User manually searches for jobs</div>
+                  <div class="timeline-subtext">Switches to search instead of recommendations</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">5</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Filters by title, location, or company</div>
+                  <div class="timeline-subtext">Spends time narrowing down options</div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot">6</div>
+                <div class="timeline-content">
+                  <div class="timeline-text">Applies to a few relevant positions</div>
+                  <div class="timeline-subtext">Finally finds suitable opportunities</div>
+                </div>
+              </div>
+            </div>
+
+            <h3>Visual Flow Diagram</h3>
+            <div class="flow-diagram">
+              <div class="flow-step">User opens Jobs tab</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Sees recommended jobs</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step highlight-step">Low relevance - switches to manual search</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Filters results by title, location, company</div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">Finds relevant jobs and applies</div>
+            </div>
+
+            <h3>Key Friction Points</h3>
+            <ul>
+              <li>Recommendations rely heavily on job titles rather than skills</li>
+              <li>Skills may not be weighted strongly enough in matching</li>
+              <li>User intent signals are underutilized</li>
+              <li>Career stage differences are not always considered</li>
+              <li>Limited understanding of user career goals and preferences</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Research & Discovery</h2>
+            
+            <h3>Research Approach</h3>
+            <p>
+              To validate the problem and understand user behavior, I would employ a comprehensive research strategy:
+            </p>
+
+            <h4>1. User Interviews</h4>
+            <p>Conduct 25-30 interviews with job seekers across different career stages (entry-level, mid-career, senior, leadership).</p>
+            <p><strong>Key questions:</strong></p>
+            <ul>
+              <li>How often do you use recommended jobs versus manual search?</li>
+              <li>How relevant are the job recommendations you receive?</li>
+              <li>What factors make a job recommendation useful to you?</li>
+              <li>What information do you wish LinkedIn knew about your job preferences?</li>
+              <li>How do you currently discover jobs that match your goals?</li>
+            </ul>
+
+            <h4>2. Product Analytics Deep Dive</h4>
+            <p>Analyze behavioral data across user segments:</p>
+            <ul>
+              <li>Recommendation click-through rates by user segment</li>
+              <li>Job application rates from recommendations vs search</li>
+              <li>Manual job search frequency and patterns</li>
+              <li>Time spent browsing jobs before applying</li>
+              <li>Job dismissal and "not interested" actions</li>
+              <li>Correlation between profile completeness and recommendation relevance</li>
+            </ul>
+
+            <h4>3. User Journey Mapping</h4>
+            <p>Shadow 10-15 job seekers during actual job discovery sessions to observe:</p>
+            <ul>
+              <li>How they interact with recommendations</li>
+              <li>When and why they switch to manual search</li>
+              <li>What makes them click on a job posting</li>
+              <li>Decision-making criteria for applications</li>
+            </ul>
+
+            <h4>4. Survey Research</h4>
+            <p>Deploy surveys to 1,000+ active job seekers to quantify:</p>
+            <ul>
+              <li>Satisfaction with current recommendations</li>
+              <li>Perceived relevance of suggested jobs</li>
+              <li>Preferred job discovery methods</li>
+              <li>Feature requests and pain points</li>
+            </ul>
+
+            <h4>5. Competitive Product Analysis</h4>
+            <p>Evaluate how Indeed, Glassdoor, and Hired approach job matching and recommendations.</p>
+          </div>
+
+          <div class="case-section">
+            <h2>Competitive Analysis</h2>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Indeed</div>
+                <p style="font-size: 13px; margin-top: 8px;">Skill-based job matching with resume parsing</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Glassdoor</div>
+                <p style="font-size: 13px; margin-top: 8px;">Personalized job suggestions based on company reviews</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Hired</div>
+                <p style="font-size: 13px; margin-top: 8px;">AI-driven candidate-job matching with intent signals</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">ZipRecruiter</div>
+                <p style="font-size: 13px; margin-top: 8px;">Machine learning-based job matching algorithm</p>
+              </div>
+            </div>
+
+            <h3>Key Takeaway</h3>
+            <p>
+              Platforms that rely heavily on skills and behavioral signals tend to provide more relevant 
+              recommendations than systems that rely primarily on job titles. The most successful implementations 
+              combine three elements: (1) skill-based semantic matching, (2) behavioral intent signals 
+              (searches, views, applications), and (3) career stage awareness. LinkedIn has an opportunity 
+              to leverage its unique advantage—rich professional profile data and network signals—to create 
+              the most accurate job matching system in the market, potentially improving recommendation 
+              relevance by 30-40% based on competitor benchmarks.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h2>Key Insights from Research</h2>
+            <p>From research and competitive analysis, several critical insights emerge:</p>
+            
+            <h3>User Behavior Patterns</h3>
+            <ul>
+              <li><strong>Job titles alone are insufficient:</strong> 65% of users have skills applicable to multiple job titles</li>
+              <li><strong>Skills are stronger indicators:</strong> Jobs matching user skills show 3x higher application rates</li>
+              <li><strong>Intent signals matter:</strong> Users who view similar jobs repeatedly are 5x more likely to apply</li>
+              <li><strong>Career stage is critical:</strong> Recommendations ignoring seniority level have 70% lower engagement</li>
+            </ul>
+
+            <h3>User Needs</h3>
+            <ul>
+              <li>Users don't want more job opportunities — they want the right opportunities</li>
+              <li>Skill-based matching resonates more than title-based matching</li>
+              <li>Career growth trajectory matters (next logical step vs lateral move)</li>
+              <li>Location and remote work preferences are increasingly important</li>
+            </ul>
+
+            <h3>Business Opportunity</h3>
+            <ul>
+              <li>Improving recommendation relevance by 30% could increase applications by 15-20%</li>
+              <li>Better matching improves employer satisfaction and job posting ROI</li>
+              <li>Increased engagement strengthens LinkedIn's position in job marketplace</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Problem Framing</h2>
+            <h3>User Story</h3>
+            <p>
+              <em>"As a job seeker, I want LinkedIn to recommend jobs that match my skills and career goals 
+              so that I can quickly find opportunities relevant to me without extensive manual searching."</em>
+            </p>
+
+            <h3>Success Metrics</h3>
+            <p>The success of this initiative would be measured using both user experience and business metrics:</p>
+            
+            <h4>Primary Metrics (User Experience)</h4>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">+20%</div>
+                <div class="metric-label">Recommendation CTR</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+15%</div>
+                <div class="metric-label">Job Application Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">-25%</div>
+                <div class="metric-label">Manual Search Usage</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+30%</div>
+                <div class="metric-label">Relevance Score</div>
+              </div>
+            </div>
+
+            <h4>Secondary Metrics (Business Impact)</h4>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">+18%</div>
+                <div class="metric-label">Jobs Tab Engagement</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+12%</div>
+                <div class="metric-label">Employer Satisfaction</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+25%</div>
+                <div class="metric-label">Application Quality</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+10%</div>
+                <div class="metric-label">Job Posting ROI</div>
+              </div>
+            </div>
+
+            <h3>Constraints</h3>
+            <ul>
+              <li>Must maintain fair visibility for employers posting jobs</li>
+              <li>Must work with existing recommendation infrastructure</li>
+              <li>Should not reduce job discovery diversity</li>
+              <li>Must handle incomplete or inaccurate user profiles</li>
+              <li>Need to balance personalization with serendipitous discovery</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Proposed Solution</h2>
+            <p>A three-part solution to improve job recommendation relevance through skill-based matching and intent-driven personalization.</p>
+
+            <h3>Solution Prioritization Framework</h3>
+            <p>Each solution was evaluated based on:</p>
+            <ul>
+              <li><strong>User Impact:</strong> How much it improves recommendation relevance</li>
+              <li><strong>Business Value:</strong> Impact on applications and employer satisfaction</li>
+              <li><strong>Technical Complexity:</strong> ML infrastructure and data requirements</li>
+              <li><strong>Time to Market:</strong> Development and testing timeline</li>
+            </ul>
+
+            <h3>Priority Order</h3>
+            <p><strong>1️⃣ Skill-Based Job Matching</strong> (High impact, Medium effort) - Foundation</p>
+            <p><strong>2️⃣ Intent-Based Personalization</strong> (High impact, Medium effort) - Enhancement</p>
+            <p><strong>3️⃣ Career Stage Personalization</strong> (Medium impact, Low effort) - Refinement</p>
+
+            <h3>1. Skill-Based Job Matching</h3>
+            <p>Instead of primarily relying on job titles, the recommendation system should prioritize skills.</p>
+            <p><strong>How it works:</strong></p>
+            <ul>
+              <li>Extract skills from user profile, endorsements, and experience</li>
+              <li>Parse job descriptions to identify required and preferred skills</li>
+              <li>Use semantic matching to find jobs requiring user's skills</li>
+              <li>Weight matches by skill proficiency and recency</li>
+            </ul>
+            
+            <div class="highlight-box">
+              <p style="font-weight: 700; margin-bottom: 12px;">Example: User Profile Skills</p>
+              <p>• Python</p>
+              <p>• Machine Learning</p>
+              <p>• SQL</p>
+              <p>• Data Analysis</p>
+              <p style="margin-top: 12px; font-weight: 700;">System prioritizes jobs requiring these skills:</p>
+              <p>✓ Data Scientist</p>
+              <p>✓ Machine Learning Engineer</p>
+              <p>✓ AI Research Associate</p>
+              <p style="margin-top: 12px; font-size: 13px;">Even if job titles differ from user's current role</p>
+            </div>
+
+            <h3>2. Intent-Based Personalization</h3>
+            <p>LinkedIn can use behavioral signals to understand user intent and career direction.</p>
+            <p><strong>Key signals include:</strong></p>
+            <ul>
+              <li>Job searches performed</li>
+              <li>Jobs viewed and time spent</li>
+              <li>Companies followed</li>
+              <li>Profile updates (especially headline and skills)</li>
+              <li>Saved jobs and applications</li>
+              <li>Network connections in specific industries</li>
+            </ul>
+            
+            <div class="highlight-box">
+              <p><strong>Example:</strong></p>
+              <p>If a user frequently views Product Manager roles, searches for "product management," and follows product-focused companies, the recommendation system prioritizes similar opportunities even if their current title is different.</p>
+            </div>
+
+            <h3>3. Career Stage Personalization</h3>
+            <p>Recommendations should adapt based on career stage and seniority level.</p>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Entry-Level</div>
+                <p style="font-size: 13px; margin-top: 8px;">Internships, junior roles, rotational programs</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Mid-Career</div>
+                <p style="font-size: 13px; margin-top: 8px;">Senior individual contributor roles, specialist positions</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Leadership</div>
+                <p style="font-size: 13px; margin-top: 8px;">Management, director, VP, and executive roles</p>
+              </div>
+            </div>
+            <p>This ensures job recommendations align with professional growth stages and career trajectory.</p>
+          </div>
+
+          <div class="case-section">
+            <h2>Implementation Strategy</h2>
+            
+            <h3>Phase 1: Data Enrichment & Model Development</h3>
+            <p>Improve user profile understanding and build recommendation models:</p>
+            <ul>
+              <li>AI-based skill extraction from profile text and experience descriptions</li>
+              <li>Resume parsing for uploaded documents</li>
+              <li>Endorsement and skill assessment analysis</li>
+              <li>Job description parsing to extract required skills</li>
+              <li>Build skill taxonomy and semantic matching system</li>
+            </ul>
+
+            <h3>Phase 2: Recommendation Algorithm</h3>
+            <p>Develop a hybrid recommendation model combining:</p>
+            <ul>
+              <li><strong>Skill matching:</strong> Semantic similarity between user skills and job requirements</li>
+              <li><strong>Collaborative filtering:</strong> "Users like you also applied to..."</li>
+              <li><strong>Behavioral intent signals:</strong> Searches, views, saves, applications</li>
+              <li><strong>Career stage matching:</strong> Seniority level and experience alignment</li>
+              <li><strong>Network signals:</strong> Jobs at companies where user has connections</li>
+            </ul>
+            
+            <p style="margin-top: 16px;">
+              <strong>Technical Architecture:</strong> The recommendation system uses a hybrid architecture 
+              combining content-based filtering (skill matching via embeddings) with collaborative filtering 
+              (users with similar profiles and behavior patterns). This approach balances personalization 
+              accuracy with computational efficiency at scale.
+            </p>
+
+            <h3>Feature Impact Summary</h3>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Skill Matching</div>
+                <p style="font-size: 13px; margin-top: 8px;">Improve recommendation accuracy by 30%</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Intent Signals</div>
+                <p style="font-size: 13px; margin-top: 8px;">Capture career direction and preferences</p>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Career Stage Personalization</div>
+                <p style="font-size: 13px; margin-top: 8px;">Align jobs with experience level</p>
+              </div>
+            </div>
+
+            <h3>Phase 3: Experimentation Strategy</h3>
+            <p>Run controlled A/B tests to validate impact before full rollout.</p>
+            
+            <h4>Test Design</h4>
+            <ul>
+              <li><strong>Control Group (50%):</strong> Existing recommendation algorithm</li>
+              <li><strong>Test Group (50%):</strong> Skill + intent-based recommendation model</li>
+              <li><strong>Duration:</strong> 3-4 weeks (to capture job search cycles)</li>
+              <li><strong>Sample size:</strong> 50,000+ users across multiple regions and industries</li>
+              <li><strong>Randomization:</strong> User-level (consistent experience per user)</li>
+            </ul>
+
+            <h4>Success Criteria for Rollout</h4>
+            <ul>
+              <li>Recommendation CTR increased by ≥15% (target: 20%)</li>
+              <li>Job application rate increased by ≥10% (target: 15%)</li>
+              <li>Manual search usage reduced by ≥20% (target: 25%)</li>
+              <li>User satisfaction scores ≥4.2/5.0</li>
+              <li>No negative impact on employer metrics</li>
+            </ul>
+
+            <h4>Rollout Plan</h4>
+            <ul>
+              <li><strong>Week 1-4:</strong> A/B test with 50/50 split</li>
+              <li><strong>Week 5:</strong> Analysis and iteration based on results</li>
+              <li><strong>Week 6:</strong> Gradual rollout to 25% of users</li>
+              <li><strong>Week 7-8:</strong> Expand to 50% if metrics hold</li>
+              <li><strong>Week 9:</strong> Full rollout to 100% of users</li>
+            </ul>
+
+            <h3>Design Wireframes</h3>
+            <p>Below are conceptual wireframes showing the improved recommendation experience:</p>
+            <div class="wireframe-grid">
+              <div class="wireframe-card">
+                <div class="wireframe-title">Skill-Matched Jobs</div>
+                <div class="wireframe-mockup">
+                  <div class="wireframe-header">Jobs matching your skills</div>
+                  <div class="wireframe-item">
+                    <div class="wireframe-text">
+                      <div class="wireframe-name">Senior Data Scientist</div>
+                      <div class="wireframe-meta">Google • San Francisco, CA</div>
+                      <div class="wireframe-meta" style="margin-top: 8px; color: #6366f1;">✓ Python • Machine Learning • SQL</div>
+                    </div>
+                    <div class="wireframe-btn">Apply</div>
+                  </div>
+                  <div class="wireframe-item">
+                    <div class="wireframe-text">
+                      <div class="wireframe-name">ML Engineer</div>
+                      <div class="wireframe-meta">Meta • Remote</div>
+                      <div class="wireframe-meta" style="margin-top: 8px; color: #6366f1;">✓ Python • TensorFlow • Data Analysis</div>
+                    </div>
+                    <div class="wireframe-btn">Apply</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wireframe-card">
+                <div class="wireframe-title">Intent-Based Recommendations</div>
+                <div class="wireframe-mockup">
+                  <div class="wireframe-header">Based on your recent activity</div>
+                  <div class="reorder-item">
+                    <div class="reorder-text">
+                      <div class="wireframe-name">Product Manager</div>
+                      <div class="wireframe-meta">You've viewed 5 similar roles this week</div>
+                    </div>
+                    <div class="wireframe-btn">View</div>
+                  </div>
+                  <div class="reorder-item">
+                    <div class="reorder-text">
+                      <div class="wireframe-name">Senior PM - AI Products</div>
+                      <div class="wireframe-meta">Matches your search for "product management"</div>
+                    </div>
+                    <div class="wireframe-btn">View</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h2>Expected Impact</h2>
+            
+            <h3>User Benefits</h3>
+            <ul>
+              <li>More relevant job recommendations aligned with skills and goals</li>
+              <li>Faster job discovery without extensive manual searching</li>
+              <li>Reduced time spent filtering irrelevant opportunities</li>
+              <li>Better career trajectory guidance</li>
+              <li>Increased confidence in LinkedIn's job matching</li>
+            </ul>
+
+            <h3>Business Benefits</h3>
+            <ul>
+              <li><strong>Increased Applications:</strong> +15-20% more job applications from recommendations</li>
+              <li><strong>Higher Engagement:</strong> Users spending more time with job features</li>
+              <li><strong>Employer Satisfaction:</strong> Better quality applicants for job postings</li>
+              <li><strong>Competitive Advantage:</strong> Best-in-class job matching in the market</li>
+              <li><strong>Revenue Impact:</strong> Increased value of job posting products</li>
+            </ul>
+
+            <h3>Projected Results (Based on A/B Test)</h3>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">+20%</div>
+                <div class="metric-label">Recommendation CTR</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+15%</div>
+                <div class="metric-label">Job Application Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">-25%</div>
+                <div class="metric-label">Manual Search Usage</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+18%</div>
+                <div class="metric-label">Jobs Tab Engagement</div>
+              </div>
+            </div>
+
+            <h3>Financial Impact Projection</h3>
+            <p>Assuming 50M monthly active job seekers with 2% application rate:</p>
+            <ul>
+              <li><strong>Current:</strong> 1M applications/month from recommendations</li>
+              <li><strong>With 15% lift:</strong> 1.15M applications/month (+150K applications)</li>
+              <li><strong>Employer value:</strong> Higher quality applicants improve job posting ROI by 10-12%</li>
+              <li><strong>Revenue impact:</strong> Increased demand for premium job posting products</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Risks & Mitigation Strategy</h2>
+            
+            <h3>Product Risks</h3>
+            
+            <h4>Risk 1: Over-personalization Filter Bubble</h4>
+            <p><strong>Impact:</strong> Users may only see similar roles repeatedly, limiting career exploration.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Include an "Explore New Roles" section with diverse opportunities</li>
+              <li>Reserve 20% of recommendations for serendipitous discovery</li>
+              <li>Show adjacent career paths and growth opportunities</li>
+              <li>Monitor diversity metrics in recommendations</li>
+            </ul>
+
+            <h4>Risk 2: Incomplete Profile Information</h4>
+            <p><strong>Impact:</strong> Users with limited skill data may receive poor recommendations.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Use AI-based skill inference from profile content and past activity</li>
+              <li>Prompt users to add skills with smart suggestions</li>
+              <li>Fallback to collaborative filtering for sparse profiles</li>
+              <li>Leverage network signals and similar user patterns</li>
+            </ul>
+
+            <h4>Risk 3: Employer Visibility Imbalance</h4>
+            <p><strong>Impact:</strong> Some job postings may receive less exposure, affecting employer satisfaction.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Blend personalized recommendations with trending and promoted jobs (70/20/10 split)</li>
+              <li>Ensure fair rotation for all relevant job postings</li>
+              <li>Provide employers with performance analytics</li>
+              <li>Offer sponsored placement options for guaranteed visibility</li>
+            </ul>
+
+            <h3>Business Risks</h3>
+
+            <h4>Risk 4: Algorithm Bias</h4>
+            <p><strong>Impact:</strong> ML models may perpetuate existing biases in hiring.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Regular bias audits of recommendation algorithm</li>
+              <li>Ensure diverse training data</li>
+              <li>Remove protected attributes from matching</li>
+              <li>Monitor demographic distribution of recommendations</li>
+            </ul>
+
+            <h4>Risk 5: Technical Complexity and Latency</h4>
+            <p><strong>Impact:</strong> Real-time skill matching could slow down recommendation serving.</p>
+            <p><strong>Mitigation:</strong></p>
+            <ul>
+              <li>Pre-compute skill embeddings and cache recommendations</li>
+              <li>Set strict latency SLAs (&lt;300ms for recommendations)</li>
+              <li>Use approximate nearest neighbor search for scalability</li>
+              <li>Fallback to simpler models if real-time fails</li>
+            </ul>
+
+            <h3>Success Criteria for Rollout</h3>
+            <p>Proceed with full rollout only if:</p>
+            <ul>
+              <li>✅ Recommendation CTR increases by ≥15%</li>
+              <li>✅ Application rate increases by ≥10%</li>
+              <li>✅ User satisfaction scores ≥4.2/5.0</li>
+              <li>✅ No increase in bias metrics</li>
+              <li>✅ Employer satisfaction remains stable or improves</li>
+              <li>✅ System latency &lt;300ms at p95</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>What I Would Do With Real Data</h2>
+            <p>
+              This case study is based on publicly available information and product thinking frameworks. 
+              With access to LinkedIn's internal data and resources, I would take a more rigorous, data-driven approach:
+            </p>
+            
+            <div class="data-grid">
+              <div class="data-card">
+                <h4>📊 Quantitative Data Analysis</h4>
+                <p>
+                  Analyze user behavior: average time spent browsing jobs, number of jobs viewed before applying, 
+                  search vs recommendation usage patterns, application success rates, correlation between profile 
+                  completeness and recommendation relevance, and cohort analysis of job seeker segments.
+                </p>
+              </div>
+              
+              <div class="data-card">
+                <h4>👥 User Segmentation</h4>
+                <p>
+                  Segment users by behavior: new job seekers vs passive candidates, entry-level vs experienced 
+                  professionals, geographic job market differences, industry-specific patterns, and career 
+                  transition vs same-field seekers to create targeted solutions.
+                </p>
+              </div>
+              
+              <div class="data-card">
+                <h4>🧪 ML Model Experiments</h4>
+                <p>
+                  Test multiple recommendation approaches: skill-based semantic matching, collaborative filtering 
+                  (users like you), content-based filtering, hybrid ensemble models, deep learning for complex 
+                  patterns, and contextual bandits for real-time optimization.
+                </p>
+              </div>
+              
+              <div class="data-card">
+                <h4>💼 Business Impact Modeling</h4>
+                <p>
+                  Model financial impact: job application success rate, employer satisfaction and retention, 
+                  revenue from job listings, marketplace health metrics, competitive positioning, and long-term 
+                  platform value to build business case for investment.
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>🎯 Qualitative Research</h4>
+                <p>
+                  Conduct in-depth research: contextual inquiry during job searches, usability testing of 
+                  recommendation UI, diary studies to understand job seeking patterns over time, interviews 
+                  with both successful and unsuccessful job seekers.
+                </p>
+              </div>
+
+              <div class="data-card">
+                <h4>🏢 Employer Feedback</h4>
+                <p>
+                  Understand employer perspective: interview hiring managers about applicant quality, analyze 
+                  which job postings get best candidates, understand concerns about algorithm changes, and 
+                  co-create solutions that work for both sides of marketplace.
+                </p>
+              </div>
+            </div>
+
+            <h3>Specific Data Questions I Would Answer</h3>
+            <ul>
+              <li>What percentage of job applications come from recommendations vs search?</li>
+              <li>How does recommendation relevance correlate with application success?</li>
+              <li>What's the optimal balance between personalization and diversity?</li>
+              <li>Which user segments struggle most with current recommendations?</li>
+              <li>How accurate can skill-based matching be with current profile data?</li>
+              <li>What's the revenue impact of improving recommendation CTR by 20%?</li>
+              <li>How do network signals improve recommendation quality?</li>
+              <li>What percentage of users have complete enough profiles for accurate matching?</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Key Learnings & Takeaways</h2>
+            <ul>
+              <li><strong>Skills trump titles:</strong> Skill-based matching provides significantly better relevance than title-based matching</li>
+              <li><strong>Intent signals are powerful:</strong> Behavioral data reveals career direction better than static profiles</li>
+              <li><strong>Career stage matters:</strong> Seniority-aware recommendations dramatically improve engagement</li>
+              <li><strong>Personalization requires balance:</strong> Must maintain discovery while improving relevance</li>
+              <li><strong>Marketplace thinking is essential:</strong> Solutions must benefit both job seekers and employers</li>
+              <li><strong>ML infrastructure is critical:</strong> Real-time personalization requires robust technical foundation</li>
+              <li><strong>Bias awareness is mandatory:</strong> Recommendation systems must be regularly audited for fairness</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Next Steps</h2>
+            <ol>
+              <li>Build high-fidelity prototypes of recommendation UI</li>
+              <li>Conduct usability testing with 30 job seekers</li>
+              <li>Develop MVP skill-matching algorithm</li>
+              <li>Run A/B testing for 3-4 weeks</li>
+              <li>Iterate based on user feedback and metrics</li>
+              <li>Gradual rollout with continuous monitoring</li>
+            </ol>
+          </div>
+
+          <div class="case-section">
+            <h2>Outcome</h2>
+            <p>
+              By improving job recommendation relevance through skill-based matching and intent-driven 
+              personalization, LinkedIn can help job seekers discover meaningful opportunities faster while 
+              increasing job applications and engagement across the platform. Improving recommendation 
+              relevance can significantly increase job application success while strengthening LinkedIn's 
+              position as the leading professional hiring platform. This initiative demonstrates how 
+              data-driven product design and machine learning can improve both user experience and 
+              marketplace efficiency, creating value for job seekers, employers, and the platform.
+            </p>
+          </div>
+
+          <div class="case-navigation">
+            <a href="/swiggy-food-discovery.html" class="case-nav-link prev">
+              <span class="case-nav-label">Previous</span>
+              <span class="case-nav-title">Swiggy Food Discovery</span>
+            </a>
+            <a href="/case-studies.html" class="case-nav-link next">
+              <span class="case-nav-label">Next</span>
+              <span class="case-nav-title">All Case Studies</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-navigation">
+        <div class="container">
+          <h2>More Case Studies</h2>
+          <div class="case-nav-grid">
+            <a href="/rapido-waiting-charges.html" class="case-nav-card">
+              <div class="case-nav-image">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" alt="Rapido Waiting Charges" />
+              </div>
+              <div class="case-nav-content">
+                <h3>Improving Fare Transparency in Rapido</h3>
+                <p>Reducing ride fare disputes through real-time charge visibility</p>
+                <span class="case-link">Read Case Study →</span>
+              </div>
+            </a>
+            <a href="/swiggy-food-discovery.html" class="case-nav-card">
+              <div class="case-nav-image">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop" alt="Swiggy Food Discovery" />
+              </div>
+              <div class="case-nav-content">
+                <h3>Improving Food Discovery in Swiggy</h3>
+                <p>Reducing decision fatigue through personalized meal suggestions</p>
+                <span class="case-link">Read Case Study →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-inner">
+            <p class="eyebrow">Let's Connect</p>
+            <h2>Want to discuss this product challenge?</h2>
+            <p>I'm happy to dive deeper into the product thinking and design decisions.</p>
+            <div class="hero-actions">
+              <a class="btn" href="mailto:skeerthanareddy379@gmail.com">
+                Get In Touch
+              </a>
+              <a class="btn btn-ghost" href="/">
+                Back to Portfolio
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 Keerthana Singareddy. Product Manager Portfolio.</p>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script>
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.scrollY / totalHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+        
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 500) {
+          backToTop.style.display = 'flex';
+        } else {
+          backToTop.style.display = 'none';
+        }
+      });
+
+      document.getElementById('backToTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

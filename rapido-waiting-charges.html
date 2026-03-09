@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improving Fare Transparency in Rapido to Reduce Ride Fare Disputes | Keerthana Singareddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="case-studies.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">Keerthana Singareddy</a>
+        <a class="back-link" href="/case-studies.html">← All Case Studies</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-detail-hero">
+        <div class="container">
+          <div class="case-tags">
+            <span class="pill">Product Design</span>
+            <span class="pill">User Experience</span>
+            <span class="pill">Transparency</span>
+          </div>
+          <h1>Improving Fare Transparency in Rapido to Reduce Ride Fare Disputes</h1>
+          <p class="lead">
+            Redesigning the waiting charges experience to improve transparency, reduce fare disputes, and increase user trust.
+          </p>
+          <div class="case-hero-image">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=600&fit=crop" alt="Rapido Waiting Charges" />
+          </div>
+        </div>
+      </section>
+
+      <section class="case-detail-content">
+        <div class="container">
+          <div class="case-section">
+            <h2>The Problem</h2>
+            <p>
+              Rapido currently adds waiting charges only after the ride ends, leading to unexpected fare increases 
+              and user frustration. Users often experience surprise when they see the final bill, as waiting charges 
+              accumulate silently during the ride without any real-time visibility. This lack of transparency creates 
+              a trust gap between riders and the platform and frequently results in disputes with drivers.
+            </p>
+            <div class="highlight-box">
+              <p>
+                <strong>Core Question:</strong> Why doesn't Rapido show waiting charges in real-time during the ride, 
+                and how can we improve transparency without disrupting the user experience?
+              </p>
+            </div>
+            
+            <h3>Evidence of the Problem</h3>
+            <p>
+              Possible signals indicating this is a real issue:
+            </p>
+            <ul>
+              <li><strong>App store complaints:</strong> Reviews mentioning "unexpected charges" and "hidden fees"</li>
+              <li><strong>Customer support tickets:</strong> High volume of fare-related disputes and refund requests</li>
+              <li><strong>Driver feedback:</strong> Reports of frequent rider arguments over waiting time accuracy</li>
+              <li><strong>Cancellation patterns:</strong> Users canceling rides after seeing final fare</li>
+              <li><strong>Trust metrics:</strong> Lower NPS scores related to pricing transparency</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Understanding the Current State</h2>
+            <h3>Current User Journey</h3>
+            <ol>
+              <li>User books a ride and sees estimated fare</li>
+              <li>Driver arrives and waits (charges start accumulating silently)</li>
+              <li>Ride starts - user has no visibility into waiting charges</li>
+              <li>Ride ends - user sees final fare with waiting charges added</li>
+              <li>User is surprised by the higher amount</li>
+            </ol>
+
+            <h3>Possible Reasons Behind Current Design</h3>
+            <p>
+              Hypotheses for why the current implementation exists:
+            </p>
+            <ul>
+              <li><strong>Simplified billing architecture:</strong> Calculating final charges at the end is technically simpler than real-time updates</li>
+              <li><strong>Reducing ride-time distractions:</strong> Avoiding interruptions to the user during the journey</li>
+              <li><strong>Legacy fare calculation systems:</strong> The billing system may not support real-time charge updates</li>
+              <li><strong>Accurate waiting time validation:</strong> Ensuring drivers get compensated for actual waiting time</li>
+              <li><strong>Minimizing development complexity:</strong> Real-time updates require WebSocket infrastructure</li>
+            </ul>
+
+            <h3>User Pain Points</h3>
+            <ul>
+              <li>Unexpected fare increases lead to negative surprises</li>
+              <li>No way to track or control waiting charges during the ride</li>
+              <li>Disputes with drivers about waiting time accuracy</li>
+              <li>Loss of trust in the platform's pricing transparency</li>
+              <li>Users feel "tricked" when they see the final bill</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Research & Discovery</h2>
+            <h3>Research Approach</h3>
+            <p>
+              To validate this problem and understand user needs, I would employ the following research methods:
+            </p>
+            <ul>
+              <li><strong>App store review analysis:</strong> Mining 1000+ reviews for patterns related to fare transparency</li>
+              <li><strong>User interviews:</strong> Conducting 20-30 interviews with frequent Rapido riders</li>
+              <li><strong>Driver interviews:</strong> Understanding driver perspective on fare disputes</li>
+              <li><strong>Support ticket analysis:</strong> Analyzing 6 months of fare-related complaints</li>
+              <li><strong>Competitive product analysis:</strong> Evaluating how Uber, Ola, and Lyft handle waiting charges</li>
+              <li><strong>User journey mapping:</strong> Identifying pain points in the current booking-to-payment flow</li>
+            </ul>
+
+            <h3>Competitive Analysis</h3>
+            <ul>
+              <li><strong>Uber:</strong> Shows real-time fare updates during the ride with clear breakdowns</li>
+              <li><strong>Ola:</strong> Displays waiting time and charges before ride starts with countdown timer</li>
+              <li><strong>Lyft:</strong> Provides fare breakdown with waiting time included in upfront estimate</li>
+            </ul>
+            
+            <p><strong>Key Takeaway:</strong> Competitors prioritize transparency in fare breakdowns, which helps reduce 
+            rider confusion and disputes. Rapido currently has an opportunity to differentiate through proactive, 
+            real-time transparency that builds trust before issues arise.</p>
+
+            <h3>Key Insights</h3>
+            <ul>
+              <li>Users value transparency over simplicity - they want to know what they're paying for</li>
+              <li>Real-time visibility reduces post-ride disputes by setting clear expectations</li>
+              <li>Clear communication builds trust and increases platform loyalty</li>
+              <li>Users want control over their spending and the ability to make informed decisions</li>
+              <li>Drivers benefit from transparency as it reduces confrontational situations</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Problem Framing</h2>
+            <h3>User Story</h3>
+            <p>
+              <em>"As a Rapido user, I want to see waiting charges accumulating in real-time so that I can 
+              understand my final fare and avoid surprises at the end of my ride."</em>
+            </p>
+
+            <h3>Success Metrics</h3>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">-40%</div>
+                <div class="metric-label">Fare Dispute Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+25%</div>
+                <div class="metric-label">User Trust Score (NPS)</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">-30%</div>
+                <div class="metric-label">Support Tickets</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+15%</div>
+                <div class="metric-label">Repeat Usage Rate</div>
+              </div>
+            </div>
+            
+            <h3>Business Impact Metrics</h3>
+            <p>Additional metrics to track business health:</p>
+            <ul>
+              <li><strong>Driver satisfaction:</strong> +10% improvement in driver retention</li>
+              <li><strong>Refund rate:</strong> -25% reduction in fare-related refunds</li>
+              <li><strong>Ride completion rate:</strong> +5% fewer cancellations post-booking</li>
+              <li><strong>Customer lifetime value:</strong> +12% increase due to improved trust</li>
+              <li><strong>Support cost:</strong> -35% reduction in fare dispute handling time</li>
+            </ul>
+
+            <h3>Constraints</h3>
+            <ul>
+              <li>Must not distract users during the ride</li>
+              <li>Should work with existing billing infrastructure</li>
+              <li>Needs to be clear for both users and drivers</li>
+              <li>Must handle edge cases (network issues, GPS errors)</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Proposed Solution</h2>
+            <h3>Solution Prioritization</h3>
+            <p>
+              I evaluated potential solutions based on:
+            </p>
+            <ul>
+              <li><strong>Implementation complexity:</strong> Engineering effort and technical feasibility</li>
+              <li><strong>User impact:</strong> Expected improvement in user experience and trust</li>
+              <li><strong>Engineering effort:</strong> Development time and resource requirements</li>
+              <li><strong>Business value:</strong> Potential reduction in disputes and support costs</li>
+            </ul>
+            
+            <h3>Recommended Three-Pronged Approach</h3>
+            <p><strong>Priority Order:</strong></p>
+            
+            <h4>1️⃣ Pre-Ride Transparency (High Impact, Low Effort)</h4>
+            <ul>
+              <li>Show waiting charge policy clearly during booking</li>
+              <li>Display "Free waiting time: 2 minutes" prominently</li>
+              <li>Explain charges: "₹1/minute after 2 minutes"</li>
+              <li>Set expectations before the ride starts</li>
+              <li><strong>Why first:</strong> Quick win, no real-time infrastructure needed</li>
+            </ul>
+
+            <h4>2️⃣ Real-Time Visibility (High Impact, Medium Effort)</h4>
+            <ul>
+              <li>Add a subtle "Waiting charges" indicator on the ride screen</li>
+              <li>Show live timer: "Waiting: 3 min (₹3)"</li>
+              <li>Update fare estimate in real-time</li>
+              <li>Non-intrusive but always visible</li>
+              <li><strong>Why second:</strong> Core solution, requires backend work</li>
+            </ul>
+
+            <h4>3️⃣ Post-Ride Clarity (Medium Impact, Low Effort)</h4>
+            <ul>
+              <li>Detailed fare breakdown with waiting time highlighted</li>
+              <li>Timeline showing when waiting charges were applied</li>
+              <li>Option to dispute with one tap</li>
+              <li>Educational content about waiting charges</li>
+              <li><strong>Why third:</strong> Reduces disputes after they occur, not preventive</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Design Solutions</h2>
+            <p>
+              Below are the key screens showing the improved waiting charges experience:
+            </p>
+
+            <div class="design-showcase">
+              <div class="design-screen">
+                <iframe src="/screens/booking-screen.html" style="width: 100%; height: 600px; border: none; border-radius: 12px;"></iframe>
+                <h4>1. Booking Screen</h4>
+                <p>Clear waiting policy shown upfront with estimated charges</p>
+              </div>
+
+              <div class="design-screen">
+                <iframe src="/screens/waiting-alert.html" style="width: 100%; height: 600px; border: none; border-radius: 12px;"></iframe>
+                <h4>2. Driver Waiting Alert</h4>
+                <p>Notification when driver arrives with countdown timer</p>
+              </div>
+
+              <div class="design-screen">
+                <iframe src="/screens/live-ride.html" style="width: 100%; height: 600px; border: none; border-radius: 12px;"></iframe>
+                <h4>3. Live Ride Screen</h4>
+                <p>Real-time waiting charges displayed subtly during ride</p>
+              </div>
+
+              <div class="design-screen">
+                <iframe src="/screens/fare-breakdown.html" style="width: 100%; height: 600px; border: none; border-radius: 12px;"></iframe>
+                <h4>4. Fare Breakdown</h4>
+                <p>Detailed breakdown with waiting time timeline</p>
+              </div>
+            </div>
+
+            <h3>Key Design Decisions</h3>
+            <ul>
+              <li><strong>Subtle but visible:</strong> Charges shown in a non-intrusive card that doesn't block the map</li>
+              <li><strong>Color coding:</strong> Green for free time, yellow for approaching limit, red for charges</li>
+              <li><strong>Progressive disclosure:</strong> Tap to see detailed breakdown without leaving the screen</li>
+              <li><strong>Contextual help:</strong> "?" icon explains waiting charges policy</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Implementation Approach</h2>
+            
+            <h3>Experimentation Strategy</h3>
+            <p>
+              The rollout would begin with an <strong>A/B test</strong> comparing the current experience with the 
+              new real-time transparency design:
+            </p>
+            <ul>
+              <li><strong>Control Group (50%):</strong> Current experience (charges shown only at end)</li>
+              <li><strong>Test Group (50%):</strong> New experience with real-time visibility</li>
+              <li><strong>Duration:</strong> 2 weeks minimum for statistical significance</li>
+              <li><strong>Sample Size:</strong> 10,000+ rides per group</li>
+            </ul>
+            
+            <h3>Phase 1: Foundation (Week 1-2)</h3>
+            <ul>
+              <li>Update booking screen with waiting policy</li>
+              <li>Add waiting time tracking to backend</li>
+              <li>Create real-time charge calculation API</li>
+              <li>Set up A/B testing infrastructure</li>
+            </ul>
+
+            <h3>Phase 2: Real-Time Display (Week 3-4)</h3>
+            <ul>
+              <li>Implement live waiting charges UI</li>
+              <li>Add WebSocket for real-time updates (or polling fallback)</li>
+              <li>Test with internal users and beta testers</li>
+              <li>Monitor performance and battery impact</li>
+            </ul>
+
+            <h3>Phase 3: Controlled Rollout (Week 5-6)</h3>
+            <ul>
+              <li>Launch A/B test with 10% of users in test group</li>
+              <li>Monitor key metrics daily (disputes, NPS, cancellations)</li>
+              <li>Gather qualitative feedback through in-app surveys</li>
+              <li>Iterate based on data and user feedback</li>
+            </ul>
+            
+            <h3>Phase 4: Full Rollout (Week 7-8)</h3>
+            <ul>
+              <li>If metrics improve by 20%+, expand to 50% of users</li>
+              <li>Continue monitoring for edge cases</li>
+              <li>Full rollout if no major issues detected</li>
+              <li>Document learnings and best practices</li>
+            </ul>
+
+            <h3>Technical Considerations</h3>
+            <ul>
+              <li><strong>Real-time sync:</strong> Use WebSockets or polling for live updates</li>
+              <li><strong>Offline handling:</strong> Cache charges locally and sync when online</li>
+              <li><strong>GPS accuracy:</strong> Handle cases where location data is unreliable</li>
+              <li><strong>Performance:</strong> Ensure updates don't drain battery or data</li>
+              <li><strong>Scalability:</strong> Design for millions of concurrent rides</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Expected Impact</h2>
+            <h3>User Benefits</h3>
+            <ul>
+              <li>No more surprise charges at the end of rides</li>
+              <li>Better understanding of fare components</li>
+              <li>Ability to make informed decisions (e.g., hurry to reduce waiting time)</li>
+              <li>Increased trust in the platform</li>
+            </ul>
+
+            <h3>Business Benefits</h3>
+            <ul>
+              <li>Reduced customer support load</li>
+              <li>Fewer fare disputes and refunds</li>
+              <li>Improved user retention</li>
+              <li>Better driver satisfaction (less conflict)</li>
+              <li>Competitive advantage through transparency</li>
+            </ul>
+
+            <h3>Projected Metrics</h3>
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <div class="metric-value">40%</div>
+                <div class="metric-label">Reduction in Disputes</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">25%</div>
+                <div class="metric-label">Increase in Trust Score</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">30%</div>
+                <div class="metric-label">Fewer Support Tickets</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">15%</div>
+                <div class="metric-label">Higher Retention</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-section">
+            <h2>Risks & Mitigation</h2>
+            <h3>Potential Risks</h3>
+            <ul>
+              <li><strong>User anxiety:</strong> Seeing charges accumulate might stress users
+                <br><em>Mitigation:</em> Use calming colors (green for free time) and clear messaging about control
+                <br><em>Impact:</em> Low - transparency reduces anxiety more than it creates it</li>
+                
+              <li><strong>Technical complexity:</strong> Real-time updates require robust infrastructure
+                <br><em>Mitigation:</em> Start with polling, move to WebSockets gradually
+                <br><em>Impact:</em> Medium - manageable with phased rollout</li>
+                
+              <li><strong>Driver pushback:</strong> Drivers might worry about users canceling
+                <br><em>Mitigation:</em> Educate drivers on long-term benefits of transparency
+                <br><em>Impact:</em> Low - drivers benefit from fewer disputes</li>
+                
+              <li><strong>Increased cancellations:</strong> Users might cancel when they see charges accumulating
+                <br><em>Mitigation:</em> This is actually good - prevents disputes later
+                <br><em>Impact:</em> Short-term revenue dip, long-term trust gain
+                <br><em>Business Risk:</em> 5-10% increase in cancellations during waiting period</li>
+                
+              <li><strong>Revenue impact:</strong> Short-term revenue drop from cancellations
+                <br><em>Mitigation:</em> Offset by increased repeat usage and reduced refunds
+                <br><em>Impact:</em> Net positive after 3 months based on competitor data</li>
+            </ul>
+            
+            <h3>Success Criteria for Rollout</h3>
+            <p>Proceed with full rollout if:</p>
+            <ul>
+              <li>Fare dispute rate decreases by at least 20%</li>
+              <li>User trust score (NPS) increases by at least 10%</li>
+              <li>Support ticket volume decreases by at least 15%</li>
+              <li>Cancellation rate increase is less than 10%</li>
+              <li>No significant technical issues or crashes</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>What I'd Do Differently With Real Data</h2>
+            <p>
+              If I had access to Rapido's actual data and resources, I would:
+            </p>
+            
+            <h3>Data Analysis</h3>
+            <ul>
+              <li><strong>Waiting time distribution:</strong> Analyze patterns - what percentage of rides have waiting charges? What's the average waiting time?</li>
+              <li><strong>Fare dispute frequency:</strong> Quantify how many disputes are specifically related to waiting charges vs other fare components</li>
+              <li><strong>Cancellation patterns:</strong> Identify if users cancel more often when waiting time exceeds certain thresholds</li>
+              <li><strong>Driver wait patterns:</strong> Understand driver behavior - are they arriving early? How long do they typically wait?</li>
+              <li><strong>Geographic patterns:</strong> Are certain areas more prone to waiting charges? (traffic, parking issues)</li>
+              <li><strong>Time-based patterns:</strong> Do waiting charges occur more during peak hours or specific times of day?</li>
+            </ul>
+            
+            <h3>User Segmentation</h3>
+            <ul>
+              <li><strong>Frequent riders:</strong> Do power users understand waiting charges better?</li>
+              <li><strong>New users:</strong> Are first-time riders more likely to dispute waiting charges?</li>
+              <li><strong>Price-sensitive users:</strong> How do different user segments react to waiting charges?</li>
+              <li><strong>Corporate vs personal:</strong> Different tolerance levels for waiting charges</li>
+            </ul>
+            
+            <h3>Competitive Benchmarking</h3>
+            <ul>
+              <li>Conduct user testing with Uber/Ola's waiting charge experience</li>
+              <li>Analyze competitor app store reviews for waiting charge complaints</li>
+              <li>Compare dispute rates across platforms (if data available)</li>
+              <li>Understand best practices from other markets (US, Southeast Asia)</li>
+            </ul>
+            
+            <h3>Experimentation</h3>
+            <ul>
+              <li><strong>Multivariate testing:</strong> Test different UI placements for waiting charge indicator</li>
+              <li><strong>Message testing:</strong> A/B test different ways of communicating waiting charges</li>
+              <li><strong>Threshold testing:</strong> Experiment with different free waiting time durations (1 min vs 2 min vs 3 min)</li>
+              <li><strong>Color psychology:</strong> Test different color schemes for charge indicators</li>
+            </ul>
+            
+            <h3>Qualitative Research</h3>
+            <ul>
+              <li>Conduct 30+ in-depth user interviews about fare transparency</li>
+              <li>Run usability tests with interactive prototypes</li>
+              <li>Shadow riders during actual trips to observe behavior</li>
+              <li>Interview drivers about their perspective on waiting charges</li>
+              <li>Analyze support call recordings for common pain points</li>
+            </ul>
+            
+            <h3>Business Impact Modeling</h3>
+            <ul>
+              <li>Calculate current cost of fare disputes (refunds + support time)</li>
+              <li>Model potential revenue impact of increased cancellations</li>
+              <li>Estimate customer lifetime value improvement from increased trust</li>
+              <li>Project driver retention impact from reduced conflicts</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Key Learnings</h2>
+            <ul>
+              <li><strong>Transparency builds trust:</strong> Users prefer knowing costs upfront, even if higher</li>
+              <li><strong>Real-time feedback matters:</strong> Immediate visibility prevents negative surprises</li>
+              <li><strong>Design for clarity:</strong> Complex information needs simple, intuitive presentation</li>
+              <li><strong>Balance is key:</strong> Show important info without overwhelming users</li>
+              <li><strong>Test assumptions:</strong> A/B testing is crucial for validating product decisions</li>
+              <li><strong>Think marketplace:</strong> Solutions must work for both riders and drivers</li>
+              <li><strong>Data-driven decisions:</strong> Real user data would significantly improve solution accuracy</li>
+            </ul>
+          </div>
+
+          <div class="case-section">
+            <h2>Alternative Approaches Considered</h2>
+            <h3>Option 1: Push Notifications</h3>
+            <p>
+              Send notifications when waiting charges start accumulating.
+              <br><strong>Rejected because:</strong> Too intrusive and users might miss them.
+            </p>
+
+            <h3>Option 2: Post-Ride Only Improvements</h3>
+            <p>
+              Just improve the fare breakdown screen without real-time updates.
+              <br><strong>Rejected because:</strong> Doesn't solve the core transparency problem.
+            </p>
+
+            <h3>Option 3: Opt-in Real-Time Updates</h3>
+            <p>
+              Let users choose whether to see live charges.
+              <br><strong>Rejected because:</strong> Adds complexity and most users would want this by default.
+            </p>
+          </div>
+
+          <div class="case-section">
+            <h2>Next Steps</h2>
+            <ol>
+              <li>Conduct user research to validate assumptions</li>
+              <li>Create high-fidelity prototypes in Figma</li>
+              <li>Run usability testing with 20-30 users</li>
+              <li>Build MVP with basic real-time display</li>
+              <li>A/B test with 10% of users for 2 weeks</li>
+              <li>Analyze data and iterate</li>
+              <li>Full rollout if metrics improve by 20%+</li>
+            </ol>
+          </div>
+
+          <div class="case-navigation">
+            <a href="/backlog-clarity-framework.html" class="case-nav-link prev">
+              <span class="case-nav-label">Previous</span>
+              <span class="case-nav-title">Backlog Clarity Framework</span>
+            </a>
+            <a href="/release-confidence.html" class="case-nav-link next">
+              <span class="case-nav-label">Next</span>
+              <span class="case-nav-title">Release Confidence Initiative</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-navigation">
+        <div class="container">
+          <h2>More Case Studies</h2>
+          <div class="case-nav-grid">
+            <a href="/swiggy-food-discovery.html" class="case-nav-card">
+              <div class="case-nav-image">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop" alt="Swiggy Food Discovery" />
+              </div>
+              <div class="case-nav-content">
+                <h3>Improving Food Discovery in Swiggy</h3>
+                <p>Reducing decision fatigue through personalized recommendations</p>
+                <span class="case-link">Read Case Study →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-inner">
+            <p class="eyebrow">Let's Connect</p>
+            <h2>Want to discuss this product challenge?</h2>
+            <p>I'm happy to dive deeper into the product thinking and design decisions.</p>
+            <div class="hero-actions">
+              <a class="btn" href="mailto:skeerthanareddy379@gmail.com">
+                Get In Touch
+              </a>
+              <a class="btn btn-ghost" href="/">
+                Back to Portfolio
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 Keerthana Singareddy. Product Manager Portfolio.</p>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script>
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.scrollY / totalHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+        
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 500) {
+          backToTop.style.display = 'flex';
+        } else {
+          backToTop.style.display = 'none';
+        }
+      });
+
+      document.getElementById('backToTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

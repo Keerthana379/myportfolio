@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fare Breakdown</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: #f9fafb;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        .header {
+            background: #FFD500;
+            padding: 60px 20px 40px;
+            text-align: center;
+            color: #000;
+        }
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 200px);
+        }
+        .total-fare-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .total-label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        .total-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        .payment-method {
+            font-size: 13px;
+            color: #000;
+            font-weight: 700;
+        }
+        .breakdown-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .breakdown-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+        .fare-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .fare-item:last-child {
+            border-bottom: none;
+        }
+        .fare-item-label {
+            font-size: 14px;
+            color: #374151;
+        }
+        .fare-item-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+        }
+        .subtotal-row {
+            padding-top: 12px;
+            margin-top: 12px;
+            border-top: 2px solid #e5e7eb;
+        }
+        .waiting-section {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .waiting-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .waiting-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #92400e;
+        }
+        .waiting-amount {
+            font-size: 18px;
+            font-weight: 700;
+            color: #92400e;
+        }
+        .waiting-detail {
+            font-size: 12px;
+            color: #92400e;
+            margin-bottom: 4px;
+            padding-left: 20px;
+        }
+        .total-row {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+        .timeline-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .timeline-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            bottom: -20px;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        .timeline-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #FFD500;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        .timeline-dot.waiting {
+            background: #000;
+            color: #FFD500;
+        }
+        .timeline-content {
+            flex: 1;
+            padding-top: 4px;
+        }
+        .timeline-time {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 2px;
+        }
+        .timeline-text {
+            font-size: 14px;
+            color: #111827;
+            font-weight: 500;
+        }
+        .timeline-subtext {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #FFD500;
+            color: #000;
+            box-shadow: 0 4px 12px rgba(255, 213, 0, 0.3);
+        }
+        .btn-secondary {
+            background: #fff;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="header">
+            <div class="success-icon">✅</div>
+            <div class="header-title">Ride Completed</div>
+            <div class="header-subtitle">Thank you for riding with Rapido</div>
+        </div>
+        
+        <div class="content">
+            <div class="total-fare-card">
+                <div class="total-label">Total Fare</div>
+                <div class="total-amount">₹88.40</div>
+                <div class="payment-method">💳 Paid via UPI</div>
+            </div>
+            
+            <div class="breakdown-card">
+                <div class="breakdown-title">Fare Breakdown</div>
+                
+                <div class="fare-item">
+                    <div class="fare-item-label">Base Fare</div>
+                    <div class="fare-item-value">₹50.00</div>
+                </div>
+                
+                <div class="fare-item">
+                    <div class="fare-item-label">Distance (3.2 km)</div>
+                    <div class="fare-item-value">₹32.00</div>
+                </div>
+                
+                <div class="fare-item">
+                    <div class="fare-item-label">Time (12 mins)</div>
+                    <div class="fare-item-value">₹3.00</div>
+                </div>
+                
+                <div class="fare-item subtotal-row">
+                    <div class="fare-item-label">Subtotal</div>
+                    <div class="fare-item-value">₹85.00</div>
+                </div>
+                
+                <div class="waiting-section">
+                    <div class="waiting-header">
+                        <div class="waiting-label">
+                            <span>⏱️</span>
+                            <span>Waiting Charges</span>
+                        </div>
+                        <div class="waiting-amount">₹3.40</div>
+                    </div>
+                    <div class="waiting-detail">• Free time: 2:00 mins</div>
+                    <div class="waiting-detail">• Charged time: 3:24 mins</div>
+                    <div class="waiting-detail">• Rate: ₹1/min</div>
+                </div>
+                
+                <div class="fare-item total-row">
+                    <div class="fare-item-label" style="font-weight: 700;">Total</div>
+                    <div class="fare-item-value" style="font-size: 20px;">₹88.40</div>
+                </div>
+            </div>
+            
+            <div class="timeline-card">
+                <div class="breakdown-title">Ride Timeline</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">📍</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">2:30 PM</div>
+                        <div class="timeline-text">Booking Confirmed</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">🏍️</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">2:35 PM</div>
+                        <div class="timeline-text">Driver Arrived</div>
+                        <div class="timeline-subtext">Waiting started</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot waiting">⏱️</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">2:37 PM</div>
+                        <div class="timeline-text">Free waiting ended</div>
+                        <div class="timeline-subtext">Charges started (₹1/min)</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">🚀</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">2:38 PM</div>
+                        <div class="timeline-text">Ride Started</div>
+                        <div class="timeline-subtext">Waiting: 3:24 (₹3.40)</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">✅</div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">2:50 PM</div>
+                        <div class="timeline-text">Ride Completed</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-secondary">Report Issue</button>
+                <button class="btn btn-primary">Rate Ride</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
